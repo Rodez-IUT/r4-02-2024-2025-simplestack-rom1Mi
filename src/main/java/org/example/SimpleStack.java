@@ -33,7 +33,7 @@ public class SimpleStack implements Stack {
      */
     @Override
     public void push(Item item) {
-
+        this.list.add(item);
     }
 
     /**
@@ -41,7 +41,7 @@ public class SimpleStack implements Stack {
      */
     @Override
     public Item peek() throws EmptyStackException {
-        return null;
+        return this.list.get(this.list.size()-1);
     }
 
     /**
@@ -52,6 +52,11 @@ public class SimpleStack implements Stack {
      */
     @Override
     public Item pop() throws EmptyStackException {
-        return null;
+        if (this.list.isEmpty()){
+            throw new EmptyStackException();
+        }
+        Item tampon = this.peek();
+        this.list.remove(this.list.size()-1);
+        return tampon;
     }
 }
